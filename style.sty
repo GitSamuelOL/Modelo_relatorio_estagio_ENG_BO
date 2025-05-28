@@ -1,0 +1,101 @@
+% Pacotes utilizados
+\usepackage[utf8]{inputenc}  
+\usepackage[brazil]{babel}  
+\usepackage{graphicx}  
+\usepackage{float}  
+\usepackage{caption}  
+\usepackage{geometry}  
+\usepackage{setspace}  
+\usepackage{indentfirst}  
+\usepackage{titlesec}  
+\usepackage{tocloft}  
+\usepackage[table]{xcolor}  
+\usepackage{fancyhdr}  
+\usepackage{xcolor}  
+\usepackage{ragged2e}  
+\usepackage{microtype}  
+\usepackage{tocloft}
+\usepackage{etoolbox}
+\usepackage{lipsum}  % apenas para exemplo=
+\usepackage{mathptmx}
+
+
+% ========== Modificação do sumário (apenas a parte visual) =========
+
+% Estilo dos pontos
+\renewcommand{\cftdot}{.}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftdotsep}{0.25}
+
+% Alinhamento e largura da enumeração (importantíssimo!)
+\setlength{\cftsecnumwidth}{1em}        % espaço reservado p/ numeração das seções (ex: "2.")
+\setlength{\cftsubsecnumwidth}{1.5em}     % p/ "2.1."
+\setlength{\cftsubsubsecnumwidth}{2.5em}  % p/ "2.1.1."
+
+% Recuos alinhados
+\setlength{\cftsecindent}{0em}
+\setlength{\cftsubsecindent}{0em}
+\setlength{\cftsubsubsecindent}{0em}
+
+% Fonte
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\renewcommand{\cftsubsubsecfont}{\normalfont}
+\renewcommand{\cftsubsubsecpagefont}{\normalfont}
+
+% Espaçamento entre os níveis
+\setlength{\cftbeforesecskip}{1pt}
+\setlength{\cftbeforesubsecskip}{1pt}
+\setlength{\cftbeforesubsubsecskip}{1pt}
+
+
+
+% ========= Definindo as margens e espaçamentos do documento =========
+
+\geometry{a4paper, margin=2.5cm}  % Define as margens do documento como 2.5 cm em todas as direções para o formato A4
+\onehalfspacing  % Define o espaçamento entre as linhas como 1.5 (espaçamento um pouco maior que o normal)
+\setlength{\parindent}{1.25cm}  % Define a indentação do primeiro parágrafo como 1.25 cm
+\setlength{\parskip}{0.2cm}  % Define o espaçamento entre os parágrafos como 0.2 cm
+
+% ========= Definição de cor para a numeração das páginas ============
+
+\definecolor{paggray}{gray}{0.5}  % Cria uma cor cinza com intensidade 0.5 para a numeração das páginas
+
+% ========== Personalização do cabeçalho e rodapé ====================
+
+\pagestyle{fancy}  % Define que o estilo de cabeçalho/rodapé será 'fancy'
+\fancyhf{}  % Limpa qualquer configuração de cabeçalho/rodapé anterior
+\fancyhead[R]{\textcolor{paggray}{\thepage}}  % Coloca o número da página no canto direito do cabeçalho, na cor cinza definida
+\renewcommand{\headrulewidth}{0pt}  % Remove a linha horizontal do cabeçalho
+\setlength{\headheight}{14.5pt}
+
+% === Evitar duplicata nas referências ====
+
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+
+% === TÍTULO DAS SEÇÕES ===
+
+\renewcommand{\thesection}{\arabic{section}}                  % Ex: 1, 2, 3
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}  % Ex: 1.1, 1.2
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}} % Ex: 1.1.1
+
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\centering} 
+  {\thesection.}{0.25em}{}
+
+\titleformat{\subsection}[hang]
+  {\normalfont\bfseries\justifying}
+  {\hspace{0.7cm}\thesubsection)}{1.5em}{}
+
+\titleformat{\subsubsection}[hang] % estilo hang para alinhamento pendente
+  {\normalfont\normalsize\bfseries} % formatação do título
+  {\hspace{2.1cm}\thesubsubsection\hspace{0.65cm}-}  % label com recuo antes do número
+  {0.1em}                          % espaço entre número e texto
+  {}
+
+
